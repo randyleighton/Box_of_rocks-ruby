@@ -11,7 +11,6 @@ describe Rock do
       expect(rock1.shape).to eq "round"
       expect(rock1.size).to eq "small"
       expect(rock1.weight).to eq "heavy"
-      
   end
 
 end
