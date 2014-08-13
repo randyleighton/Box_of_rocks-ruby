@@ -8,9 +8,10 @@ describe Rock do
   end
   it "returns the rock characteristics" do
       rock1 = Rock.new({:shape =>"round", :size =>"small", :weight =>"heavy"})
-      expect(rock1.type).to eq "round"
-      expect(rock1.weight).to eq "heavy"
+      expect(rock1.shape).to eq "round"
       expect(rock1.size).to eq "small"
+      expect(rock1.weight).to eq "heavy"
+      
   end
 
 end
