@@ -12,5 +12,8 @@ describe Rock do
       expect(rock1.size).to eq "small"
       expect(rock1.weight).to eq "heavy"
   end
-
+  it "reshapes a rock in the collection" do
+    new_rock = Rock.new({:shape =>"jagged", :size =>"small", :weight =>"light"})
+    new_rock.reforge({:shape =>"smooth", :size =>"small", :weight =>"light"})
+  end
 end
