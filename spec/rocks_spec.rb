@@ -14,6 +14,6 @@ describe Rock do
   end
   it "reshapes a rock in the collection" do
     new_rock = Rock.new({:shape =>"jagged", :size =>"small", :weight =>"light"})
-    new_rock.reforge({:shape =>"smooth", :size =>"small", :weight =>"light"})
+    new_rock.reshape({:shape =>"smooth", :size =>"small", :weight =>"light"})
   end
 end

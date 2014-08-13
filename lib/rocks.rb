@@ -8,7 +8,7 @@ class Rock
     @weight = attributes[:weight]
   end
   
-  def reforge(attributes)
+  def reshape(attributes)
     @shape = attributes[:shape]
     @size = attributes[:size]
     @weight = attributes[:weight]

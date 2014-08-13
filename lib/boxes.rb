@@ -23,4 +23,8 @@ class Box
     @@all_boxes << self
   end
   
+  def add_rock(rock_to_add)
+    @rocks << rock_to_add
+  end
+
 end
