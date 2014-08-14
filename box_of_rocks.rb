@@ -1,12 +1,19 @@
 require './lib/boxes'
 require './lib/rocks'
+@current_box = Box.all
+@current_box_rock_count
 
 def main_menu
 	loop do
 		system("clear")
+		if Box.all.any?
+			print "Your current box: #{@current_box.color}\n\n"
+		end
 		puts "[== Main Menu ==]"
 		puts "[1] Create a Box"
 		puts "[2] Create a Rock"
+		puts "[3] Put some rocks in your current box"
+		puts "[4] Polish and shape some of your rocks from a box"
 		puts "[x] Exit and throw away rocks\n\n"
 
 		print "Enter Choice: "
@@ -19,7 +26,7 @@ def main_menu
 			puts "Your box and rocks disappear"
 			exit
 		else
-			puts "Choose more wisely.\n\n"	
+			puts "Choose more wisely.\n\n"
 		end
 	end
 end
@@ -50,6 +57,10 @@ def create_rock
 	@current_rock = Rock.new.last
 	puts "\n\nYour new rock is shaped like: #{@current_rock.shape}"
 	puts "It is a #{@current_rock.shape} shaped rock and its got a #{@current_rock.weight} weight\n\n"
+end
+
+def put_in_box
+
 end
 
 main_menu
