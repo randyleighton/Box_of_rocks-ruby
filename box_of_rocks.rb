@@ -65,36 +65,51 @@ def create_rock
 end
 
 def put_in_box
+	view_boxes
+	puts "Which box [#] would you like to put a rock in: "
+	box_choice = gets.chomp.to_i
+	current_box = Box.all[box_choice - 1]
+	puts "\n\n"
 	view_rocks
-	puts "\n\nWhich rock [#] would you like to put into the box"
-end
-
-def reshape_rock
-
+	puts "\n\nWhich rock [#] would you like to put into the box: "
+	rock_choice = gets.chomp.to_i
+	current_rock = Rock.all[rock_choice - 1]
+	current_box.add_rock(current_rock)
+	puts "\n\n"
 end
 
 def view_box_of_rocks
-	puts "List of Boxes:"
-	Box.all.each_with_index do |box, index|
-		puts "[#{index+1}]#{box.shape} shaped #{box.size}
-					sized #{box.color} colored box"
-	end
+	view_boxes
 	puts "Choose a box [#] to see the Rocks!"
 	box_choice = gets.chomp.to_i
-	@current_box = Box.all[box_choice]
+	@current_box = Box.all[box_choice-1]
 	puts "#{@current_box.color} box contains: "
 	@current_box.rocks_in_the_box.each do |rock|
-		puts "[#{index+1}]#{rock.shape} shaped #{rock.weight}
-					weighted #{rock.color} colored rock"
+		puts "#{rock.shape} shaped #{rock.weight} weighted #{rock.size} sized rock"
 	end
+	puts "\n\n"
+end
+
+def view_boxes
+	system("clear")
+	puts "List of Boxes:"
+	Box.all.each_with_index do |box, index|
+		puts "[#{index+1}]#{box.shape} shaped #{box.size} sized #{box.color} colored box"
+	end
+	puts "\n\n"
 end
 
 def view_rocks
+	system("clear")
 	puts "List of Rocks:"
 	Rock.all.each_with_index do |rock, index|
 		puts "[#{index+1}]#{rock.shape} shaped #{rock.weight}
 					weighted #{rock.size} sized rock"
 	end
+end
+
+def reshape_rock
+
 end
 
 main_menu
