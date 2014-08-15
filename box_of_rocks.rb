@@ -109,7 +109,23 @@ def view_rocks
 end
 
 def reshape_rock
-
+	view_rocks
+	puts "Choose a rock [#] to polish and change: "
+	rock_choice = gets.chomp.to_i
+	current_rock = Rock.all[rock_choice - 1]
+	print "Enter a description of the new shape: "
+	shape = gets.chomp
+	print "Enter a description of the new size: "
+	size = gets.chomp
+	current_rock.reshape{:shape => shape, :size=>size}
+	puts "You now have a #{rock.shape} shaped #{rock.weight}
+					weighted #{rock.size} sized rock"
 end
 
 main_menu
+
+
+
+
+
+
