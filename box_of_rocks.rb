@@ -1,10 +1,11 @@
 require './lib/boxes'
 require './lib/rocks'
+require 'pry'
 
 
 def main_menu
+	system("clear")
 	loop do
-		system("clear")
 		puts "[== Main Menu ==]"
 		puts "[1] Create a Box"
 		puts "[2] Create a Rock"
@@ -56,8 +57,9 @@ def create_rock
 	size = gets.chomp
 	print "Enter a description of the weight: "
 	weight = gets.chomp
-	Rock.new({:shape =>shape, :size=>size, :weight=>weight}).save
-	@current_rock = Rock.new.last
+	rock1 = Rock.new({:shape =>shape, :size=>size, :weight=>weight})
+	rock1.save
+	@current_rock = Rock.all.last
 	puts "\n\nYour new rock is shaped like: #{@current_rock.shape}"
 	puts "It is a #{@current_rock.shape} shaped rock and its got a #{@current_rock.weight} weight\n\n"
 end
@@ -91,7 +93,7 @@ def view_rocks
 	puts "List of Rocks:"
 	Rock.all.each_with_index do |rock, index|
 		puts "[#{index+1}]#{rock.shape} shaped #{rock.weight}
-					weighted #{rock.color} colored rock"
+					weighted #{rock.size} sized rock"
 	end
 end
 
