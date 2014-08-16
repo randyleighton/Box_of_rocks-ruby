@@ -2,11 +2,11 @@ require './lib/boxes'
 require './lib/rocks'
 require 'pry'
 
-
 def main_menu
 	system("clear")
 	loop do
 		puts "[== Main Menu ==]"
+    puts "you must create a box and some rocks to use feature [3] and [4] and [v]\n\n"
 		puts "[1] Create a Box"
 		puts "[2] Create a Rock"
 		puts "[3] Put some rocks in your current box"
@@ -103,9 +103,9 @@ def view_rocks
 	system("clear")
 	puts "List of Rocks:"
 	Rock.all.each_with_index do |rock, index|
-		puts "[#{index+1}]#{rock.shape} shaped #{rock.weight}
-					weighted #{rock.size} sized rock"
+		puts "[#{index+1}]#{rock.shape} shaped #{rock.weight} weighted #{rock.size} sized rock"
 	end
+  puts "\n\n"
 end
 
 def reshape_rock
@@ -115,11 +115,12 @@ def reshape_rock
 	current_rock = Rock.all[rock_choice - 1]
 	print "Enter a description of the new shape: "
 	shape = gets.chomp
-	print "Enter a description of the new size: "
+  print "Enter a description of the new weight: "
+  weight = gets.chomp
+  print "Enter a description of the new size: "
 	size = gets.chomp
-	current_rock.reshape{:shape => shape, :size=>size}
-	puts "You now have a #{rock.shape} shaped #{rock.weight}
-					weighted #{rock.size} sized rock"
+  current_rock.reshape({:shape => shape, :weight => weight, :size => size})
+  puts "You now have a #{current_rock.shape} shaped #{current_rock.weight} weighted #{current_rock.size} sized rock\n\n"
 end
 
 main_menu
